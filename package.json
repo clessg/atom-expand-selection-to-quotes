@@ -1,10 +1,12 @@
 {
   "name": "expand-selection-to-quotes",
   "main": "./lib/expand-selection-to-quotes",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Expands selections to single or double quotes.",
   "activationCommands": {
-    "atom-text-editor": ["expand-selection-to-quotes:toggle"]
+    "atom-text-editor": [
+      "expand-selection-to-quotes:toggle"
+    ]
   },
   "keywords": [
     "quotes",
