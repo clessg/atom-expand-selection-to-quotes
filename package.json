@@ -1,13 +1,16 @@
 {
   "name": "expand-selection-to-quotes",
   "main": "./lib/expand-selection-to-quotes",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Expands selections to single or double quotes.",
   "activationEvents": [
     "expand-selection-to-quotes:toggle"
   ],
   "keywords": [
-    "quotes", "selection", "expand selection", "expand selection to quotes"
+    "quotes",
+    "selection",
+    "expand selection",
+    "expand selection to quotes"
   ],
   "repository": "https://github.com/clessg/atom-expand-selection-to-quotes",
   "license": "MIT",
