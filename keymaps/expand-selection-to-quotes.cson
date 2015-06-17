@@ -1,2 +1,2 @@
-'.workspace':
+'atom-text-editor':
   "ctrl-'": 'expand-selection-to-quotes:toggle'
