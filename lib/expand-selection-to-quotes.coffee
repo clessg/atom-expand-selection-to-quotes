@@ -13,18 +13,19 @@
 
 class ExpandSelectionToQuotes
   constructor: (@editor) ->
-    return if editor.cursors.length > 1
-    @addSelection()
+    @cursors = editor.getCursorBufferPositions()
+    for b, index in @cursors
+      @addSelection(index)
 
-  addSelection: ->
-    quoteRange = @getQuoteRange()
+  getCursorPosition: (index) ->
+    return @cursors[index]
+    
+  addSelection: (index) ->
+    quoteRange = @getQuoteRange(index)
     @editor.addSelectionForBufferRange(quoteRange) if quoteRange
 
-  getCursorPosition: ->
-    @editor.cursors[0].getBufferPosition()
-
-  getOpeningQuotePosition: ->
-    range = new Range @editor.buffer.getFirstPosition(), @getCursorPosition()
+  getOpeningQuotePosition: (index) ->
+    range = new Range @editor.buffer.getFirstPosition(), @getCursorPosition(index)
     quote = false
     @editor.buffer.backwardsScanInRange /[`|'|"]/g, range, (obj) =>
       @quoteType = obj.matchText
@@ -32,18 +33,18 @@ class ExpandSelectionToQuotes
       quote = obj.range.end
     quote
 
-  getClosingQuotePosition: ->
-    range = new Range @getCursorPosition(), @editor.buffer.getEndPosition()
+  getClosingQuotePosition: (index) ->
+    range = new Range @getCursorPosition(index), @editor.buffer.getEndPosition()
     quote = false
     @editor.buffer.scanInRange /[`|'|"]/g, range, (obj) =>
       obj.stop() if obj.matchText is @quoteType
       quote = obj.range.start
     quote
 
-  getQuoteRange: ->
-    opening = @getOpeningQuotePosition()
+  getQuoteRange: (index) ->
+    opening = @getOpeningQuotePosition(index)
     return false unless opening?
-    closing = @getClosingQuotePosition()
+    closing = @getClosingQuotePosition(index)
     return false unless closing?
     new Range opening, closing
 
