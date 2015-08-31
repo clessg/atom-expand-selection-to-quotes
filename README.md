@@ -12,3 +12,9 @@ Now supports multiple selections! Thanks [@de-monkeyz](https://github.com/de-mon
 
 ## Known Issues
 * It assumes that the type of quote to the left of the cursor is the one we want, which is stupid and not always true.
+* Emmet may have a conflicting keymapping. Put this in your keymap file to fix it:
+
+```coffeescript
+'atom-text-editor':
+  "ctrl-'": 'expand-selection-to-quotes:toggle'
+```
