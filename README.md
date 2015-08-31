@@ -2,7 +2,7 @@
 
 Expands selections in the Atom editor to single or double quotes.
 
-The default keybinding is Ctrl+'.
+The default keybinding is Ctrl+' and Cmd+'.
 
 Originally written by Ben Johnson. The original package seems to have disappeared and has deprecations, so I am reposting it with fixes.
 
@@ -12,9 +12,3 @@ Now supports multiple selections! Thanks [@de-monkeyz](https://github.com/de-mon
 
 ## Known Issues
 * It assumes that the type of quote to the left of the cursor is the one we want, which is stupid and not always true.
-* Emmet may have a conflicting keymapping. Put this in your keymap file to fix it:
-
-```coffeescript
-'atom-text-editor':
-  "ctrl-'": 'expand-selection-to-quotes:toggle'
-```
