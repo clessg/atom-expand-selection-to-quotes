@@ -1,5 +1,5 @@
-'atom-text-editor':
+'atom-workspace atom-text-editor:not([mini])':
   "ctrl-'": 'expand-selection-to-quotes:toggle'
 
-'.platform-darwin atom-text-editor':
+'.platform-darwin atom-workspace atom-text-editor:not([mini])':
   'cmd-\'': 'expand-selection-to-quotes:toggle'
