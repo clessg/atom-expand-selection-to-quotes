@@ -13,13 +13,14 @@
 
 class ExpandSelectionToQuotes
   constructor: (@editor) ->
+    editor = atom.workspace.getActiveTextEditor()
     @cursors = editor.getCursorBufferPositions()
     for b, index in @cursors
       @addSelection(index)
 
   getCursorPosition: (index) ->
     return @cursors[index]
-    
+
   addSelection: (index) ->
     quoteRange = @getQuoteRange(index)
     @editor.addSelectionForBufferRange(quoteRange) if quoteRange
