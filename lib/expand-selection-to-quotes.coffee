@@ -28,7 +28,7 @@ class ExpandSelectionToQuotes
   getOpeningQuotePosition: (index) ->
     range = new Range @editor.buffer.getFirstPosition(), @getCursorPosition(index)
     quote = false
-    @editor.buffer.backwardsScanInRange /[`|'|"]/g, range, (obj) =>
+    @editor.buffer.backwardsScanInRange /[`'"]/g, range, (obj) =>
       @quoteType = obj.matchText
       obj.stop()
       quote = obj.range.end
@@ -37,7 +37,7 @@ class ExpandSelectionToQuotes
   getClosingQuotePosition: (index) ->
     range = new Range @getCursorPosition(index), @editor.buffer.getEndPosition()
     quote = false
-    @editor.buffer.scanInRange /[`|'|"]/g, range, (obj) =>
+    @editor.buffer.scanInRange /[`'"]/g, range, (obj) =>
       obj.stop() if obj.matchText is @quoteType
       quote = obj.range.start
     quote
